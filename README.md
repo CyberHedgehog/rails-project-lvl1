@@ -1,6 +1,6 @@
 # HexletCode
-[![hexlet-check](https://github.com/CyberHedgehog/rails-project-lvl1/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/CyberHedgehog/rails-project-lvl1/actions/workflows/hexlet-check.yml)
-
+[![hexlet-check](https://github.com/CyberHedgehog/rails-project-lvl1/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/CyberHedgehog/rails-project-lvl1/actions/workflows/hexlet-check.yml) 
+[![Rubocop](https://github.com/CyberHedgehog/rails-project-lvl1/actions/workflows/rubocop.yml/badge.svg)](https://github.com/CyberHedgehog/rails-project-lvl1/actions/workflows/rubocop.yml)
 ## Installation
 
 Add this line to your application's Gemfile:
