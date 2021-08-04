@@ -3,13 +3,11 @@
 module HexletCode
   module Tag
     def self.build(name, params = {})
-      params_string = params.each_with_object('') { |(key, value), str| str << " #{key}=\"#{value}\"" }
+      params_string = params
+        .each_with_object([]) { |(key, value), list| list << " #{key}=\"#{value}\"" }
+        .join('')
       tag = "<#{name}#{params_string}>"
-      if block_given?
-        body = yield
-        tag << "#{body}</#{name}>"
-      end
-      tag
+      (block_given?) ? "#{tag}#{yield}</#{name}>" : tag
     end
   end
 end
