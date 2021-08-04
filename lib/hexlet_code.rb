@@ -2,6 +2,7 @@
 
 require 'hexlet_code/version'
 require 'hexlet_code/tag'
+require 'hexlet_code/form_for'
 
 module HexletCode
   class Error < StandardError; end
