@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module HexletCode
   class Form
     def initialize(entity, action)
@@ -13,10 +15,8 @@ module HexletCode
     end
 
     def to_html
-      inputs = @inputs.map { |i| i.to_html }.join
-      puts @inputs
+      inputs = @inputs.map(&:to_html).join
       HexletCode::Tag.build('form', action: @action) { inputs }
     end
   end
-  
 end

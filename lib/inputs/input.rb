@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Inputs
   class Input
     def initialize(params = {})
