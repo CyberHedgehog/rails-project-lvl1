@@ -7,7 +7,11 @@ module Inputs
     end
 
     def to_html
-      HexletCode::Tag.build('input', type: 'text', value: @params[:value], name: @params[:name])
+      HexletCode::Tag.build('input', type: @params[:type] || 'text', value: @params[:value], name: @params[:name])
+    end
+
+    def label
+      HexletCode::Tag.build('label', for: @params[:name]) { @params[:name].capitalize }
     end
   end
 end

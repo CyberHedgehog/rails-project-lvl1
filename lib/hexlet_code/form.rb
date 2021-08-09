@@ -14,8 +14,13 @@ module HexletCode
       @inputs << Object.const_get("Inputs::#{type.to_s.capitalize}").new(name: name, value: value, options: params)
     end
 
+    def submit
+      @inputs << Inputs::Input.new(type: 'submit', value: 'Save', name: 'commit')
+    end
+
     def to_html
-      inputs = @inputs.map(&:to_html).join
+      # inputs = @inputs.map(&:to_html).join
+      inputs = @inputs.each_with_object([]) { |input, result| result.push(input.label, input.to_html) }.join
       HexletCode::Tag.build('form', action: @action) { inputs }
     end
   end

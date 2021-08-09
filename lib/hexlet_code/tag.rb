@@ -9,8 +9,7 @@ module HexletCode
                 else
                   " #{key}=\"#{value}\""
                 end
-      end
-                            .join
+      end.join
       tag = "<#{name}#{params_string}>"
       block_given? ? "#{tag}#{yield}</#{name}>" : tag
     end
