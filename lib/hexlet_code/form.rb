@@ -11,7 +11,7 @@ module HexletCode
     def input(name, params = {})
       value = @entity[name]
       type = params[:as] || :input
-      @inputs << Object.const_get("Inputs::#{type.to_s.capitalize}").new(name: name, value: value)
+      @inputs << Object.const_get("Inputs::#{type.to_s.capitalize}").new(name: name, value: value, options: params)
     end
 
     def to_html
