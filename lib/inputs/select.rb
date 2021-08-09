@@ -3,12 +3,13 @@
 module Inputs
   class Select < Input
     def to_html
-      select_opts = @params.dig(:options, :collection).each_with_object([]) do |option, result|
+      select_opts = @params[:collection].each_with_object([]) do |option, result|
         tag_opts = { value: option }
         tag_opts[:selected] = nil if option == @params[:value]
-        result << HexletCode::Tag.build('option', tag_opts) { @params[:value] }
+        result << HexletCode::Tag.build('option', tag_opts) { option }
       end
-      HexletCode::Tag.build('select', name: @params[:name]) { select_opts.join }
+      props = @params.reject { |k| %i[value as collection].include? k }
+      HexletCode::Tag.build('select', props) { select_opts.join }
     end
   end
 end

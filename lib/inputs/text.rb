@@ -3,7 +3,10 @@
 module Inputs
   class Text < Input
     def to_html
-      HexletCode::Tag.build('textarea', cols: @params[:cols] || 20, rows: @parms[:rows] || 40, name: @params[:name]) do
+      props = @params.reject { |k| %i[as value].include? k }
+      props[:cols] = 20 unless props.key? :cols
+      props[:rows] = 40 unless props.key? :rows
+      HexletCode::Tag.build('textarea', props) do
         @params[:value]
       end
     end
