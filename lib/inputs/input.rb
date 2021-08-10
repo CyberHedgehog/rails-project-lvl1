@@ -7,7 +7,8 @@ module Inputs
     end
 
     def to_html
-      HexletCode::Tag.build('input', @params)
+      props = { type: @params[:type] || 'text', **@params }
+      HexletCode::Tag.build('input', props)
     end
 
     def label
