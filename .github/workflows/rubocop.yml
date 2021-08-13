@@ -14,3 +14,5 @@ jobs:
         bundler-cache: true
     - name: Lint
       run: bundle exec rubocop
+    - name: Test
+      run: rake test

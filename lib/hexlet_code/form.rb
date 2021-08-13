@@ -11,7 +11,7 @@ module HexletCode
     def input(name, params = {})
       value = @entity[name]
       type = params[:as] || :input
-      @inputs << Object.const_get("Inputs::#{type.to_s.capitalize}").new(name: name, value: value, **params)
+      @inputs << Object.const_get("Inputs::#{type.to_s.capitalize}").new(value: value, name: name, **params)
     end
 
     def submit(value = 'Save')
@@ -19,10 +19,8 @@ module HexletCode
     end
 
     def to_html
-      # inputs = @inputs.map(&:to_html).join
-      puts @inputs
       inputs = @inputs.each_with_object([]) { |input, result| result.push(input.label, input.to_html) }.join
-      HexletCode::Tag.build('form', action: @action) { inputs }
+      HexletCode::Tag.build('form', action: @action, method: 'post') { inputs }
     end
   end
 end
