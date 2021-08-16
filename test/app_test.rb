@@ -38,4 +38,12 @@ class AppTest < Minitest::Test
     assert form.include? input
     assert form.include? textarea
   end
+
+  def test_textarea_params
+    user = @user_struct.new
+    form = HexletCode.form_for user do |f|
+      f.input :job, as: :text, cols: 30, rows: 50
+    end
+    assert form.include? '<textarea name="job" cols="30" rows="50"></textarea>'
+  end
 end
