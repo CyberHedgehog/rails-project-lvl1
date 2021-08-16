@@ -2,6 +2,8 @@
 
 module HexletCode
   class Form
+    attr_reader :inputs, :action
+
     def initialize(entity, action)
       @entity = entity
       @action = action
