@@ -9,9 +9,10 @@ module HexletCode
     end
 
     def input(name, params = {})
-      value = @entity[name]
+      input_params = { name: name, **params }
+      input_params[:value] = @entity[name] if @entity[name]
       type = params[:as] || :input
-      @inputs << Object.const_get("Inputs::#{type.to_s.capitalize}").new(value: value, name: name, **params)
+      @inputs << Object.const_get("Inputs::#{type.to_s.capitalize}").new(input_params)
     end
 
     def submit(value = 'Save')
