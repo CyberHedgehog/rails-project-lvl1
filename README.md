@@ -18,6 +18,30 @@ Or install it yourself as:
     $ gem install hexlet_code
 
 ## Usage
+```
+User = Struct.new(:name, :job, :gender, keyword_init: true)
+user = User.new name: 'James', job: 'Metallica', gender: 'm'
+
+HexletCode.form_for user do |f|
+  f.input :name
+  f.input :job, as: :text
+  f.input :gender, as: :select, collection: %w[m f]
+  f.submit
+end
+
+# <form action="#" method="post">
+#   <label for="name">Name</label>
+#   <input type="text" value="James" name="name">
+#   <label for="Job">Job</label>
+#   <textarea cols="20" rows="40" name="job">Metallica</textarea>
+#   <label for="gender">Gender</label>
+#   <select name="gender">
+#     <option value="m" selected>m</option>
+#     <option value="f">f</option>
+#   </select>
+#   <input type="submit" value="Save" name="commit">
+# </form>
+```
 
 
 ## Development
