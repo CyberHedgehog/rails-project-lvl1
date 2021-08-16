@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module Inputs
+module HexletCode::Inputs
   class Input
     def initialize(params = {})
       @params = params

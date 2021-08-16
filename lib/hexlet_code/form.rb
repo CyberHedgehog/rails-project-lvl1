@@ -12,11 +12,11 @@ module HexletCode
       input_params = { name: name, **params }
       input_params[:value] = @entity[name] if @entity[name]
       type = params[:as] || :input
-      @inputs << Object.const_get("Inputs::#{type.to_s.capitalize}").new(input_params)
+      @inputs << Object.const_get("HexletCode::Inputs::#{type.to_s.capitalize}").new(input_params)
     end
 
     def submit(value = 'Save')
-      @inputs << Inputs::Input.new(type: 'submit', value: value, name: 'commit')
+      @inputs << HexletCode::Inputs::Input.new(type: 'submit', value: value, name: 'commit')
     end
 
     def to_html

@@ -3,9 +3,9 @@
 require 'hexlet_code/version'
 require 'hexlet_code/tag'
 require 'hexlet_code/form_for'
-require 'inputs/input'
-require 'inputs/text'
-require 'inputs/select'
+require 'hexlet_code/inputs/input'
+require 'hexlet_code/inputs/text'
+require 'hexlet_code/inputs/select'
 
 module HexletCode
   class Error < StandardError; end

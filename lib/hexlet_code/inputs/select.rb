@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module Inputs
+module HexletCode::Inputs
   class Select < Input
     def to_html
       select_opts = @params[:collection].each_with_object([]) do |option, result|

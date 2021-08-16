@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module Inputs
+module HexletCode::Inputs
   class Text < Input
     def to_html
       props = @params.reject { |k| %i[as value].include? k }
