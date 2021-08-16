@@ -5,8 +5,8 @@ require_relative '../lib/hexlet_code'
 
 class AppTest < Minitest::Test
   def setup
-    user = Struct.new(:name, :job, :gender, keyword_init: true)
-    @user = user.new(name: 'James', job: 'Metallica', gender: 'm')
+    @user_struct = Struct.new(:name, :job, :gender, keyword_init: true)
+    @user = @user_struct.new(name: 'James', job: 'Metallica', gender: 'm')
   end
 
   def test_should_work
@@ -19,5 +19,23 @@ class AppTest < Minitest::Test
       f.input :gender, as: :select, collection: %w[m f]
     end
     assert_equal test_form_data, form
+  end
+
+  def test_form_url
+    form_action = '/my-users'
+    form = HexletCode.form_for @user, form_action
+    assert form.include? "action=\"#{form_action}\""
+  end
+
+  def test_no_value_input
+    user = @user_struct.new
+    form = HexletCode.form_for user do |f|
+      f.input :name
+      f.input :job, as: :text
+    end
+    textarea = '<textarea name="job" cols="20" rows="40"></textarea>'
+    input = '<input type="text" name="name">'
+    assert form.include? input
+    assert form.include? textarea
   end
 end
