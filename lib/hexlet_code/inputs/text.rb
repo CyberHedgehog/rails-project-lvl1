@@ -2,7 +2,7 @@
 
 module HexletCode
   module Inputs
-    class Text < Input
+    class Text < BaseInput
       def to_html
         props = @params.reject { |k| %i[as value].include? k }
         props[:cols] = 20 unless props.key? :cols

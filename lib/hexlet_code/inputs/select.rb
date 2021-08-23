@@ -2,7 +2,7 @@
 
 module HexletCode
   module Inputs
-    class Select < Input
+    class Select < BaseInput
       def to_html
         select_opts = @params[:collection].each_with_object([]) do |option, result|
           tag_opts = { value: option }
